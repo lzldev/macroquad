@@ -584,6 +584,8 @@ impl EventHandler for Stage {
 
         if !context.cursor_grabbed {
             context.mouse_position = Vec2::new(x, y);
+        } else {
+            miniquad::window::set_cursor_grab(context.cursor_grabbed);
         }
 
         if context.update_on.mouse_down {
@@ -700,9 +702,6 @@ impl EventHandler for Stage {
 
     fn update(&mut self) {
         let _z = telemetry::ZoneGuard::new("Event::update");
-
-        // Unless called every frame, cursor will not remain grabbed
-        miniquad::window::set_cursor_grab(get_context().cursor_grabbed);
 
         #[cfg(not(target_arch = "wasm32"))]
         {
