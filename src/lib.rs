@@ -300,7 +300,7 @@ impl MiniquadInputEvent {
 }
 
 impl Context {
-    const DEFAULT_BG_COLOR: Color = BLACK;
+    const DEFAULT_BG_COLOR: Color = BLANK;
 
     fn new(
         update_on: conf::UpdateTrigger,
